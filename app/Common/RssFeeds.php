@@ -12,14 +12,6 @@ use Carbon\Carbon;
 
 class RssFeeds {
     public static function feeds(Xpath $xpath, $titles = [], $desces = [], $urls = []) {
-        if (count($titles) === 0) {
-            return false;
-        }
-
-        if (count($titles) !== count($urls)) {
-            return false;
-        }
-
         if (!empty($xpath->preurl)) {
             $preurl = $xpath->preurl;
             $urlss = collect($urls)->map(function ($url, $key) use ($preurl) {
