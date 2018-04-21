@@ -12,4 +12,5 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
     $router->resource('xpaths', XpathController::class);
+    $router->get('users', 'UserController@users');
 });

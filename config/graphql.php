@@ -5,6 +5,7 @@ use App\GraphQL\Mutation\NewUserMutation;
 use App\GraphQL\Mutation\UpdateUserMutation;
 use App\GraphQL\Query\UsersQuery;
 use App\GraphQL\Type\MyProfileType;
+use App\GraphQL\Type\MyXpathType;
 use App\GraphQL\Type\OrdersType;
 use App\GraphQL\Type\UsersType;
 use example\Mutation\ExampleMutation;
@@ -100,6 +101,7 @@ return [
             'query' => [
                 'users' => UsersQuery::class,
                 'myProfile' => \App\GraphQL\Query\MyProfileQuery::class,
+                'myxpaths' => \App\GraphQL\Query\MyXpathsQuery::class,
             ],
             'mutation' => [
                 'NewUser' => NewUserMutation::class,
@@ -111,7 +113,8 @@ return [
     'types' => [
         'users'   => UsersType::class,
         'orders'  => OrdersType::class,
-        'myprofile' => MyProfileType::class
+        'myprofile' => MyProfileType::class,
+        'myxpath' => MyXpathType::class
     ],
     
     // This callable will be passed the Error object for each errors GraphQL catch.

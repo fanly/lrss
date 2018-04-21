@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\User;
 use App\Xpath;
 
 use Encore\Admin\Form;
@@ -76,6 +77,9 @@ class XpathController extends Controller
             $grid->id('ID')->sortable();
 
             $grid->column('url');
+
+            $grid->column('user.name', '归属人');
+
             $grid->column('urldesc', "描述");
 
             $grid->column('titlexpath');
@@ -148,6 +152,13 @@ class XpathController extends Controller
                 ->rules('max:100');
 
             $form->divide();
+            $form->select('user_id')->options(function ($id) {
+                $user = User::find($id);
+                if ($user) {
+                    return [$user->id => $user->name];
+                }
+            })->ajax('/admin/users');
+
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');
         });
