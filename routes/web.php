@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('feed/{id}', 'RssController@index');
+Route::post('/login', 'AuthenticateController@authenticate');

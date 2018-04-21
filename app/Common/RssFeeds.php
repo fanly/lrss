@@ -17,7 +17,6 @@ class RssFeeds {
             $urlss = collect($urls)->map(function ($url, $key) use ($preurl) {
                 return $preurl.trim($url);
             });
-            info($urlss);
         } else {
             $urlss = collect($urls);
         }

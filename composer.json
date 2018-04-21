@@ -9,7 +9,10 @@
         "encore/laravel-admin": "1.5.*",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "noh4ck/graphiql": "@dev",
+        "rebing/graphql-laravel": "^1.10",
+        "tymon/jwt-auth": "^1.0@dev"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
