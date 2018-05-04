@@ -6,7 +6,7 @@ php:
 
 before_script:
   - composer self-update
-  - composer install --prefer-source --no-interaction --dev
+  - composer install
   - ./vendor/bin/phplint
 
 script: ./vendor/bin/phpunit --coverage-text --coverage-clover ./build/logs/clover.xml
