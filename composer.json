@@ -11,6 +11,7 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "noh4ck/graphiql": "@dev",
+        "overtrue/phplint": "^1.1",
         "rebing/graphql-laravel": "^1.10",
         "tymon/jwt-auth": "^1.0@dev"
     },
@@ -18,7 +19,8 @@
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~6.0"
+        "phpunit/phpunit": "~6.0",
+        "squizlabs/php_codesniffer": "^3.2"
     },
     "autoload": {
         "classmap": [
