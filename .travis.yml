@@ -7,6 +7,7 @@ php:
 before_script:
   - composer self-update
   - composer install
+  - composer require overtrue/phplint -vvv
   - ./vendor/bin/phplint
 
 script: ./vendor/bin/phpunit --coverage-text --coverage-clover ./build/logs/clover.xml
