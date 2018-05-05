@@ -5,6 +5,7 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Jobs\AutoUpdateRss;
+use App\Repositories\EloquentRssRepository;
 
 class Kernel extends ConsoleKernel
 {
@@ -27,7 +28,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->job(new AutoUpdateRss)->everyFiveMinutes();
+        $schedule->job(new AutoUpdateRss(new EloquentRssRepository()))->everyFiveMinutes();
     }
 
     /**
