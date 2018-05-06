@@ -42,7 +42,7 @@ class EloquentRssRepository implements RssRepositoryContract {
             }
         };
 
-        $pool = new Pool($client, $requests(xpaths), [
+        $pool = new Pool($client, $requests($xpaths), [
             'concurrency' => 5,
             'fulfilled' => function ($response, $index) {
                 // this is delivered each successful response
