@@ -32,6 +32,8 @@ class AutoUpdateRss implements ShouldQueue
      */
     public function handle()
     {
-        $this->rssRC->query();
+        $xpaths = $this->rssRC->query();
+
+        $this->rssRC->update($xpaths);
     }
 }

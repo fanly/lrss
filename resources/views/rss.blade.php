@@ -2,7 +2,8 @@
     <channel>
         <title>{{ $xpath->url or ' title' }}</title>
         <description>{{ $xpath->urldesc or '描述' }}</description>
-        <link>{{ $xpath->url }}</link>
+        <link href="{{ url("/feed/$xpath->id") }}" rel="self" type="application/atom+xml"/>
+        <link rel="hub" href="http://phubb.cweiske.de/hub.php" />
         <atom:link href="{{ url("/feed/$xpath->id") }}" rel="self" type="application/rss+xml"/>
         <pubDate>{{ $pubDate }}</pubDate>
         <lastBuildDate>{{ $pubDate }}</lastBuildDate>

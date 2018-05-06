@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->job(new AutoUpdateRss(new EloquentRssRepository()))->everyFiveMinutes();
+        $schedule->job(new AutoUpdateRss(new EloquentRssRepository()))->hourly();
     }
 
     /**
