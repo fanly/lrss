@@ -152,6 +152,18 @@ class XpathController extends Controller
                 ->rules('max:100');
 
             $form->divide();
+
+            $form->select('interval', '更新间隔时间')->options(
+                [
+                1 => '半个小时', 
+                2 => '一个小时', 
+                4 => '两个小时',
+                8 => '四个小时', 
+                16 => '八个小时',
+                24 => '半天',
+                ]
+            );
+
             $form->select('user_id')->options(function ($id) {
                 $user = User::find($id);
                 if ($user) {
