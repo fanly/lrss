@@ -15,7 +15,7 @@ class EloquentRssRepository implements RssRepositoryContract {
 
         $now = Carbon::now();
 
-        $xpaths = $allXpaths->contains(function ($value, $key) use ($now) {
+        $xpaths = $allXpaths->filter(function ($value, $key) use ($now) {
             $diff = $now->diffInHours(Carbon::parse($value->created_at));
             return $diff % $value->interval == 0;
         });
