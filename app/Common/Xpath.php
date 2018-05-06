@@ -34,9 +34,9 @@ class Xpath {
         return $crawler->each(function (Crawler $node) use ($key) {
             if (empty($key)) {
                 return trim($node->text());
-            } else {
-                return $node->attr($key);
             }
+            // 去掉 else 的效果
+                return $node->attr($key);
         });
     }
 }
