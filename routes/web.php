@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Route::get('feed/{id}', 'RssController@index');
+Route::get('/{any}', 'HomeController@index')->where('any', '.*');
+
+Route::get('feed/{id}', 'RssController@show');
 Route::post('/login', 'AuthenticateController@authenticate');

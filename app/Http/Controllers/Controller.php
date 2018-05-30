@@ -10,4 +10,19 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function output($code = 200, $message = "", $data = [], $jsonp = '')
+    {
+        $res = [
+            "meta" => [
+                "code"    => $code,
+                "message" => $message,
+            ],
+            "data" => $data,
+        ];
+        if (!$jsonp) {
+            return response()->json($res);
+        }
+        return response()->json($res)->setCallback($jsonp);
+    }
 }
