@@ -77,20 +77,26 @@ export default {
   },
   methods: {
     async getList () {
-        const response = await fetchList({
-            per_page: this.per_page,
-            current_page: this.current_page
-        })
-        let rss = response.data.data.rss
-        let data = response.data.data.rss.data
-        if (data instanceof Array) {
-            this.list = data
-        } else {
-            this.list = Object.values(data)
+        try {
+            const response = await fetchList({
+                per_page: this.per_page,
+                current_page: this.current_page
+            })
+            let rss = response.data.data.rss
+            let data = response.data.data.rss.data
+            if (data instanceof Array) {
+                this.list = data
+            } else {
+                this.list = Object.values(data)
+            }
+            this.current_page = Number(rss.current_page)
+            this.per_page = Number(rss.per_page)
+            this.total = Number(rss.total)
+        } catch (e) {
+            if (e === 401) {
+                this.$router.push({ path: '/login' })
+            }
         }
-        this.current_page = Number(rss.current_page)
-        this.per_page = Number(rss.per_page)
-        this.total = Number(rss.total)
     },
     fetchData (to, from, next) {
       this.getList()

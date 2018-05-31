@@ -17,4 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('rss', 'RssController');
+Route::middleware('auth:api')->resource('rss', 'RssController');
+Route::post('login', 'AuthenticateController@authenticate');

@@ -15,7 +15,6 @@
 //    return view('welcome');
 //});
 
-Route::get('/{any}', 'HomeController@index')->where('any', '.*');
-
 Route::get('feed/{id}', 'RssController@show');
 Route::post('/login', 'AuthenticateController@authenticate');
+Route::get('/{any}', 'HomeController@index')->where('any', '.*');

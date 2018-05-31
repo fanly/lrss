@@ -3,7 +3,10 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
 class Handler extends ExceptionHandler
 {
@@ -48,6 +51,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof AuthenticationException
+            || $exception instanceof TokenExpiredException
+            || $exception instanceof TokenInvalidException) {
+            return response()->json([
+                "meta" => [
+                    "code" => 401,
+                    "message" => '无效的认证',
+                ],
+                "data" => [],
+            ]);
+        }
+
         return parent::render($request, $exception);
     }
 }

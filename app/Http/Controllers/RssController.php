@@ -30,7 +30,7 @@ class RssController extends Controller
 
     public function show($id)
     {
-        $model = Xpath::find($id);
+        $model = XpathModel::find($id);
         return Xpath::analysis($model);
     }
 }
