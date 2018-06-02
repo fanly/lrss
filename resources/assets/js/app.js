@@ -9,21 +9,21 @@ Vue.use(ElementUI)
 
 import App from './views/App'
 import Xpath from './views/Xpath'
+import Me from './views/Me'
 import Login from './views/Login'
-import Home from './views/Home'
 
 const router = new VueRouter({
     mode: 'history',
     routes: [
         {
             path: '/',
-            name: 'home',
-            component: Home
+            name: 'xpath',
+            component: Xpath
         },
         {
-            path: '/xpath',
-            name: 'xpath',
-            component: Xpath,
+            path: '/me',
+            name: 'me',
+            component: Me
         },
         {
             path: '/login',

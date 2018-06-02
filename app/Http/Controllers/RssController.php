@@ -16,7 +16,13 @@ class RssController extends Controller
      */
     public function index(Request $request)
     {
-        $all_rss = XpathModel::all();
+        $from = $request->input('from', 0);
+
+        if ($from == 1) {
+            $all_rss = $request->user()->xpaths()->get();
+        } else {
+            $all_rss = XpathModel::all();
+        }
 
         $current_page = $request->input('current_page', 1);
         $per_page = $request->input('per_page', 3);

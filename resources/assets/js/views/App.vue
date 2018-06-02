@@ -9,9 +9,8 @@
                     background-color="#545c64"
                     text-color="#fff"
                     active-text-color="#ffd04b">
-                <el-menu-item index="0">Home</el-menu-item>
-                <el-menu-item index="1">Xpath</el-menu-item>
-                <el-menu-item index="2">登录</el-menu-item>
+                <el-menu-item index="0">RSS</el-menu-item>
+                <el-menu-item index="1">我的</el-menu-item>
             </el-menu>
         </el-header>
         <el-main>
@@ -23,17 +22,15 @@
     export default {
         data() {
             return {
-                activeIndex: '1',
+                activeIndex: '0',
                 routes: [
-                    'home',
-                    'xpath',
-                    'login'
+                    '/',
+                    'me'
                 ]
             };
         },
         methods: {
             handleSelect(key, keyPath) {
-                console.log(key, keyPath);
                 this.$router.push({'path': this.routes[key]})
             }
         }
