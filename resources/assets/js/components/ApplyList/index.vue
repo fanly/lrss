@@ -17,16 +17,9 @@
                                 label="链接">
                         </el-table-column>
                         <el-table-column
-                                prop="urldesc"
-                                label="简要描述"
+                                prop="interval"
+                                label="更新间隔时间"
                                 width="180">
-                        </el-table-column>
-                        <el-table-column
-                                label="RSS 地址"
-                                width="180">
-                            <template slot-scope="scope">
-                                <el-tag size="medium">feed/{{ scope.row.id }}</el-tag>
-                            </template>
                         </el-table-column>
                         <el-table-column label="操作">
                             <template slot-scope="scope">
@@ -59,36 +52,36 @@
     export default {
         computed: {
             total () {
-                if (this.rss == null) {
+                if (this.apply == null) {
                     return 0
                 }
 
-                return Number(this.rss.total)
+                return Number(this.apply.total)
             },
             current_page () {
-                if (this.rss == null) {
+                if (this.apply == null) {
                     return 0
                 }
 
-                return Number(this.rss.current_page)
+                return Number(this.apply.current_page)
             },
             per_page () {
-                if (this.rss == null) {
+                if (this.apply == null) {
                     return 0
                 }
 
-                return Number(this.rss.per_page)
+                return Number(this.apply.per_page)
             },
             list () {
-                if (this.rss == null) {
+                if (this.apply == null) {
                     return []
                 }
 
-                return (this.rss.data instanceof Array) ? this.rss.data : Object.values(this.rss.data);
+                return (this.apply.data instanceof Array) ? this.apply.data : Object.values(this.apply.data);
             }
         },
         props: {
-            rss: {
+            apply: {
                 type: Object,
                 default: null
             }
@@ -99,7 +92,7 @@
             }
         },
         methods: {
-            handleRssShow (index, data) {
+            handleapplyShow (index, data) {
                 console.log(index)
                 console.log(data)
             },
@@ -108,10 +101,10 @@
                 console.log(data)
             },
             handleSizeChange(val) {
-                this.$emit('listenToRssListSizeChangeEvent', val)
+                this.$emit('listenToApplyListSizeChangeEvent', val)
             },
             handleCurrentChange(val) {
-                this.$emit('listenToRssListCurrentChangeEvent', val)
+                this.$emit('listenToApplyListCurrentChangeEvent', val)
             }
         }
     }

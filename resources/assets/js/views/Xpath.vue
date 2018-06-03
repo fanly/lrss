@@ -7,7 +7,7 @@
 import { fetchList } from '../apis/rss'
 import RssList from '../components/RssList'
 export default {
-  name: 'couponlist',
+  name: 'rsslist',
   components: {
       RssList
   },

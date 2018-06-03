@@ -18,4 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:api')->resource('rss', 'RssController');
+Route::middleware('auth:api')->resource('apply', 'ApplyController');
 Route::post('login', 'AuthenticateController@authenticate');

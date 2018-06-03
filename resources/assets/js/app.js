@@ -9,6 +9,7 @@ Vue.use(ElementUI)
 
 import App from './views/App'
 import Xpath from './views/Xpath'
+import Apply from './views/Apply'
 import Me from './views/Me'
 import Login from './views/Login'
 
@@ -19,6 +20,11 @@ const router = new VueRouter({
             path: '/',
             name: 'xpath',
             component: Xpath
+        },
+        {
+            path: '/apply',
+            name: 'apply',
+            component: Apply
         },
         {
             path: '/me',

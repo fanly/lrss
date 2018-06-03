@@ -1,36 +1,49 @@
 <template>
-    <rss-list :rss="rss"
-              v-on:listenToRssListCurrentChangeEvent="handleCurrentChange"
-              v-on:listenToRssListSizeChangeEvent="handleSizeChange"></rss-list>
+    <div>
+        <div>
+            <rss-list
+                    :rss="rss"
+                    v-on:listenToRssListCurrentChangeEvent="handleRssCurrentChange"
+                    v-on:listenToRssListSizeChangeEvent="handleRssSizeChange">
+            </rss-list>
+        </div>
+        <div>
+            <apply-list :apply="apply"
+                        v-on:listenToApplyListCurrentChangeEvent="handleApplyCurrentChange"
+                        v-on:listenToApplyListSizeChangeEvent="handleApplySizeChange">
+            </apply-list>
+        </div>
+    </div>
 </template>
 
 <script>
     import { fetchList } from '../apis/rss'
+    import { fetchApplyList, postApply } from '../apis/apply'
     import RssList from '../components/RssList'
+    import ApplyList from '../components/ApplyList'
+
     export default {
         name: "me",
         components: {
-            RssList
+            RssList,
+            ApplyList
         },
         data () {
             return {
                 rss: null,
-                locked: false,
-                has_more: true,
-                next_cursor: 1,
-                loading: true,
-                showtop: false,
-                hash_id: '',
-                current_page: 1,
-                per_page: 3
+                apply: null,
+                rss_current_page: 1,
+                rss_per_page: 3,
+                apply_current_page: 1,
+                apply_per_page: 3
             }
         },
         methods: {
-            async getList() {
+            async getRssList() {
                 try {
                     const response = await fetchList({
-                        per_page: this.per_page,
-                        current_page: this.current_page,
+                        per_page: this.rss_per_page,
+                        current_page: this.rss_current_page,
                         from: 1
                     })
                     this.rss = response.rss
@@ -40,8 +53,23 @@
                     }
                 }
             },
+            async getApplyList() {
+                try {
+                    const response = await fetchApplyList({
+                        per_page: this.apply_per_page,
+                        current_page: this.apply_current_page,
+                        from: 1
+                    })
+                    this.apply = response.apply
+                } catch (e) {
+                    if (e === 401) {
+                        this.$router.push({path: '/login'})
+                    }
+                }
+            },
             fetchData(to, from, next) {
-                this.getList()
+                this.getRssList()
+                this.getApplyList()
             },
             handleRssShow(index, data) {
                 console.log(index)
@@ -51,13 +79,21 @@
                 console.log(index)
                 console.log(data)
             },
-            handleSizeChange(val) {
-                this.per_page = val
-                this.getList()
+            handleRssSizeChange(val) {
+                this.rss_per_page = val
+                this.getRssList()
             },
-            handleCurrentChange(val) {
-                this.current_page = val
-                this.getList()
+            handleRssCurrentChange(val) {
+                this.rss_current_page = val
+                this.getRssList()
+            },
+            handleApplySizeChange(val) {
+                this.apply_per_page = val
+                this.getApplyList()
+            },
+            handleApplyCurrentChange(val) {
+                this._current_page = val
+                this.getApplyList()
             }
         },
         beforeRouteEnter (to, from, next) {

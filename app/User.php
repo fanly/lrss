@@ -49,4 +49,8 @@ class User extends Authenticatable implements JWTSubject
     public function xpaths() {
         return $this->hasMany(Xpath::class);
     }
+
+    public function applies() {
+        return $this->hasMany(Apply::class);
+    }
 }
