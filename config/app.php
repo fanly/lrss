@@ -227,5 +227,12 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+    'interval_options' => [
+        1 => '一个小时',
+        2 => '两个小时',
+        4 => '四个小时',
+        8 => '八个小时',
+        12 => '半天',
+    ],
 
 ];

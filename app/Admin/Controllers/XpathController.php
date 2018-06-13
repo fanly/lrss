@@ -91,9 +91,12 @@ class XpathController extends Controller
             $grid->column('preurl');
             $grid->column('urlxpath');
             $grid->column('urlvalue');
+            $grid->column('interval', '间隔时间')
+                ->display(function ($interval) {
+                    return config('app.interval_options')[$interval];
+                });
 
             $grid->created_at();
-            $grid->updated_at();
         });
     }
 
@@ -154,13 +157,7 @@ class XpathController extends Controller
             $form->divide();
 
             $form->select('interval', '更新间隔时间')->options(
-                [
-                1 => '一个小时', 
-                2 => '两个小时',
-                4 => '四个小时', 
-                8 => '八个小时',
-                12 => '半天',
-                ]
+                config('app.interval_options')
             );
 
             $form->select('user_id')->options(function ($id) {

@@ -18,6 +18,7 @@
  *
  */
 
+use App\Admin\Extensions\Popover;
 use Encore\Admin\Grid\Column;
 
 Encore\Admin\Form::forget(['map', 'editor']);
@@ -25,3 +26,4 @@ Encore\Admin\Form::forget(['map', 'editor']);
 //Column::extend('rss', function ($value) {
 //    return "<span style='color: green'>".'/feed/'.$value."</span>";
 //});
+Column::extend('popover', Popover::class);

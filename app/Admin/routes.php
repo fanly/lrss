@@ -14,4 +14,5 @@ Route::group([
     $router->resource('xpaths', XpathController::class);
     $router->resource('applies', ApplyController::class);
     $router->get('users', 'UserController@users');
+    $router->resource('emails', EmailController::class);
 });
