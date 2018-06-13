@@ -30,6 +30,7 @@ class RssCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('email')->to($this->email->user->email);
+        return $this->view('email')
+            ->with(['content' => $this->email->content]);
     }
 }
