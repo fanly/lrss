@@ -3,10 +3,15 @@ import Cookies from 'js-cookie'
 const TokenKey = 'api_token'
 
 export function getToken() {
-  return Cookies.get(TokenKey)
+  let token = Cookies.get(TokenKey)
+  console.log('-----')
+  console.log(token)
+  console.log('-----')
+  return token
 }
 
 export function setToken(token) {
+  console.log(token)
   return Cookies.set(TokenKey, token)
 }
 

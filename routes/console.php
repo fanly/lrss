@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\RssCreatedEvent;
+use App\Events\RssPublicEvent;
 use Illuminate\Foundation\Inspiring;
 
 /*
@@ -16,3 +18,11 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+Artisan::command('echo', function () {
+    event(new RssCreatedEvent());
+})->describe('echo demo');
+
+Artisan::command('public_echo', function () {
+    event(new RssPublicEvent());
+})->describe('echo demo');

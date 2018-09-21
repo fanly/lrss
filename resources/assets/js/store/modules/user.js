@@ -7,8 +7,6 @@ const user = {
     status: '',
     code: '',
     token: getToken(),
-    name: '',
-    avatar: '',
     introduction: '',
     roles: [],
     setting: {
@@ -32,11 +30,8 @@ const user = {
     SET_STATUS: (state, status) => {
       state.status = status
     },
-    SET_NAME: (state, name) => {
-      state.name = name
-    },
-    SET_AVATAR: (state, avatar) => {
-      state.avatar = avatar
+    SET_USER: (state, user) => {
+      state.user = user
     },
     SET_ROLES: (state, roles) => {
       state.roles = roles
@@ -49,9 +44,8 @@ const user = {
       const email = userInfo.email.trim()
       return new Promise((resolve, reject) => {
         loginByEmail(email, userInfo.password).then(response => {
-          console.log('loginByEmail');
-          console.log(response)
           commit('SET_TOKEN', response.token)
+          commit('SET_USER', response.user)
           setToken(response.token)
           resolve()
         }).catch(error => {
@@ -74,9 +68,7 @@ const user = {
           } else {
             reject('getInfo: roles must be a non-null array !')
           }
-
-          commit('SET_NAME', data.name)
-          commit('SET_AVATAR', data.avatar)
+          commit('SET_USER', data.user)
           commit('SET_INTRODUCTION', data.introduction)
           resolve(response)
         }).catch(error => {

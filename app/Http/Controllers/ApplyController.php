@@ -14,8 +14,7 @@ class ApplyController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $from = $request->input('from', 0);
 
         if ($from == 1) {
@@ -58,11 +57,9 @@ class ApplyController extends Controller
         ]);
 
         if ($apply) {
-            return $this->output(
-                200,
+            return $this->output(200,
                 "创建数据成功: $apply->id",
-                ['apply' => $apply]
-            );
+                ['apply' => $apply]);
         }
 
         return $this->output(502, '创建失败');

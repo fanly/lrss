@@ -1,5 +1,8 @@
 <template>
     <div>
+        <el-card class="box-card">
+            <p>yemeishu@126.comm</p>
+        </el-card>
         <div>
             <rss-list
                     :rss="rss"
@@ -17,6 +20,7 @@
 </template>
 
 <script>
+    import { getUserInfo } from '../apis/login'
     import { fetchList } from '../apis/rss'
     import { fetchApplyList, postApply } from '../apis/apply'
     import RssList from '../components/RssList'

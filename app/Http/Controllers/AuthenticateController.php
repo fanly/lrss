@@ -30,6 +30,24 @@ class AuthenticateController extends Controller
             return $this->output(500, 'could_not_create_token');
         }
         // all good so return the token
-        return $this->output(200, '登录成功', compact('token'));
+        return $this->output(
+            200,
+            '登录成功',
+            [
+                'user' => $this->jwt->user(),
+                'token' => $token
+            ]
+        );
+    }
+
+    public function user(Request $request)
+    {
+        return $this->output(
+            200,
+            '获取用户信息成功',
+            [
+                'user' => $request->user()
+            ]
+        );
     }
 }

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import store from './store'
+require('./bootstrap');
 
 Vue.use(VueRouter)
 Vue.use(ElementUI)
@@ -10,6 +11,7 @@ Vue.use(ElementUI)
 import App from './views/App'
 import Xpath from './views/Xpath'
 import Apply from './views/Apply'
+import Example from './views/Example'
 import Me from './views/Me'
 import Login from './views/Login'
 
@@ -25,6 +27,11 @@ const router = new VueRouter({
             path: '/apply',
             name: 'apply',
             component: Apply
+        },
+        {
+            path: '/example',
+            name: 'example',
+            component: Example
         },
         {
             path: '/me',

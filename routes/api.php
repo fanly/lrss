@@ -13,9 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:api')->get('/user', 'AuthenticateController@user');
 
 Route::middleware('auth:api')->resource('rss', 'RssController');
 Route::middleware('auth:api')->resource('apply', 'ApplyController');

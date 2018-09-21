@@ -7,20 +7,24 @@
     "require": {
         "php": ">=7.0.0",
         "encore/laravel-admin": "1.5.*",
+        "fanly/log2dingding": "^0.0.2",
         "fideloper/proxy": "~3.3",
+        "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "noh4ck/graphiql": "@dev",
         "overtrue/phplint": "^1.1",
+        "predis/predis": "^1.1",
         "rebing/graphql-laravel": "^1.10",
+        "rollbar/rollbar-laravel": "^2.3",
+        "sentry/sentry-laravel": "^0.9.0",
         "tymon/jwt-auth": "^1.0@dev"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~6.0",
-        "squizlabs/php_codesniffer": "^3.2"
+        "phpunit/phpunit": "~6.0"
     },
     "autoload": {
         "classmap": [
@@ -55,7 +59,7 @@
         ]
     },
     "config": {
-        "preferred-install": "dist",
+        "preferred-install": "dev",
         "sort-packages": true,
         "optimize-autoloader": true
     }
