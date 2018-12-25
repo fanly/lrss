@@ -13,6 +13,7 @@ Route::group([
     $router->get('/', 'HomeController@index');
     $router->resource('xpaths', XpathController::class);
     $router->resource('applies', ApplyController::class);
+    $router->resource('rssdatas', RssDataController::class);
     $router->get('users', 'UserController@users');
     $router->resource('emails', EmailController::class);
 });
