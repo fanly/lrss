@@ -36,19 +36,19 @@ class RssDataController extends Controller
     public function store(Request $request)
     {
         // 验证是否正确
-        if ($request->token !== env('RSS_DATA_SECRET')) {
+        if ($request->input('token', '') !== env('RSS_DATA_SECRET')) {
             return $this->output(401, "token 信息错误");
         }
 
         $rssData = new RssData();
 
-        $rssData->title = $request->title;
-        $rssData->author = $request->author;
-        $rssData->type = $request->type;
-        $rssData->content = $request->input('content');
-        $rssData->url = $request->url;
-        $rssData->imageUrl = $request->imageUrl;
-        $rssData->published = $request->published;
+        $rssData->title = $request->input('title', '');
+        $rssData->author = $request->input('author', '');
+        $rssData->type = $request->input('type', '');
+        $rssData->content = $request->input('content', '');
+        $rssData->url = $request->input('url', '');
+        $rssData->imageUrl = $request->input('imageUrl', '');
+        $rssData->published = $request->input('published', '');
 
         $saved = $rssData->save();
 
