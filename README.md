@@ -419,6 +419,7 @@ public static function feeds(Xpath $xpath, $titles = [], $desces = [], $urls = [
 然后借助 IFTTT 绑定钉钉的群机器人 Webhook：
 
 ![iftttout](http://ow20g4tgj.bkt.clouddn.com/2018-04-07-iftttout.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ffanly%2Flrss.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Ffanly%2Flrss?ref=badge_shield)
 
 最后在手机钉钉或者在 PC 上就能及时收到最新资讯和信息了：
 
@@ -435,3 +436,7 @@ public static function feeds(Xpath $xpath, $titles = [], $desces = [], $urls = [
 
 **「未完待续」**
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ffanly%2Flrss.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Ffanly%2Flrss?ref=badge_large)
